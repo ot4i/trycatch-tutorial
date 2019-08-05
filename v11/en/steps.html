@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM App Connect Enterprise V11 Tutorial" /> 
+		
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
+
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">Using a TryCatch node to catch an exception thrown within a section of a message flow <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to use the TryCatch node to isolate exceptions which are thrown from different parts of a message flow. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, one project will be created in your workspace: An application named <span class="application">ExampleTryCatch</span>. </p>
+								
+							
+								<p> <span class="application">ExampleTryCatch</span> provides a single message flow named <span class="resource">TryCatch</span> which receives data using an HTTPInput node. The next node in the flow is a Compute node which depending on the content of the input message will either throw a user exception, or pass the message on to the next node in the flow which is a TryCatch node. If the Compute node throws an exception then the message is returned to the HTTPInput node and sent down its Catch terminal.  Alternatively, the message is sent to the TryCatch node. The TryCatch node acts like a valve.  Initially, the input message is routed through the node unchanged to the Try terminal. If a downstream node throws an exception, like the Throw node in this example flow, the TryCatch node catches it and routes the original message to its Catch terminal. You can connect the Catch terminal to further nodes to provide error processing for the message after an exception. Each branch of flow logic uses a separate Mapping node to construct a reply message which is sent back to the HTTP Requestor using the HTTPReply node. This flow layout demonstrates how a TryCatch node can be used to route the handling of user exceptions down separate branches in a flow. This can be helpful if you wish to write exception handling logic which is specific for particular kinds of exception as it avoids all exceptions flowing back to the Catch terminal of your input node. </p>
+								
+							
+								<p> Once imported using the link on the right, the provided project is ready to be deployed and tested. To deploy, you can use a provided BAR file, as described on the Prepare tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+							   	
+							
+							</ul>
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Create an integration node and deploy the message flow</h4>
+						    
+						    
+								<p> Prepare the scenario by executing the following steps: </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Create an integration node by starting an App Connect Enterprise command console and executing the following commands:<br><code><span class="cmdname">mqsicreatebroker TESTNODE</span></code><br><code><span class="cmdname">mqsistart TESTNODE</span></code><br><code><span class="cmdname">mqsicreateexecutiongroup TESTNODE -e server</span></code>
+										
+										</li>
+									
+										<li> Back in the Toolkit, drag and drop deploy the provided BAR file named <span class="application">TryCatch.bar</span> which you will find inside the <span class="application">ExampleTryCatch</span> application.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4></h4>
+							<ul>
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+					<div class="small-12 medium-12 large-12 columns">
+					
+				    	<div class="row content-details">
+					      	<h4></h4>
+					        
+						    
+								<p> <h4>Use the Flow Exerciser to test the tutorial scenario </h4></p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Open <span class="resource">TryCatch.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow (when challenged you do not need to redeploy the flow again).</li>
+												
+													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
+												
+													<li> Two saved messages are provided.<br>The input message <span class="resource">Input_UseCatchOnHTTPInput</span> contains this data:<br><span class="resource">{"Message": "Use catch terminal on HTTPInput node"}</span><br>The input message <span class="resource">Input_UseCatchOnTryCatch</span> contains this data:<br><span class="resource">{"Message": "Use catch terminal on TryCatch node"}</span><br>Select one of the input messages and click Send and your message is sent to the HTTPInput node.</li>
+												
+													<li> After you close the dialog, the path taken through the messageflow is highlighted. Try both input messages and note how the choice of data in the input message causes each flow branch to be executed.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> This tutorial has shown how to use the TryCatch node to isolate exceptions which are thrown from different parts of a message flow. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/ac04850_.htm')" title="Knowledge Center link to TryCatch node">TryCatch node</a> </li>
+							   	
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+							   	
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
