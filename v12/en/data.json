@@ -65,14 +65,14 @@
             "summary": 
 			{
                 "overviewName": "OVERVIEW",
-                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
                 "sections": 
 				[
                     {
                         "section": "This tutorial demonstrates a simple message flow that receives a JSON input message over HTTP. Depending on the data in the message, the flow will either throw a user exception in the Compute node which follows the HTTPInput, or allow the message to carry on through a TryCatch node before throwing an exception from a Throw node. Each branch of flow logic uses a separate Mapping node to construct a reply message which is sent back to the HTTP Requestor using the HTTPReply node. This flow layout demonstrates how a TryCatch node can be used to route the handling of user exceptions down separate branches in a flow. This can be helpful if you wish to write exception handling logic which is specific for particular kinds of exception as it avoids all exceptions flowing back to the Catch terminal of your input node."
                     },
                     {
-                        "section": "The tutorial requires an ACE integration node owned server, or a standalone server."
+                        "section": "The tutorial requires an integration node owned server, or a standalone server."
                     },
                     {
                         "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. There are no other pre-requisites needed by the scenario."
